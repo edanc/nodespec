@@ -10,7 +10,7 @@ module NodeSpec
 
       def initialize(host, options = {})
         @host = host
-        @ssh_options = Net::SSH.configuration_for(@host)
+        @ssh_options = Net::SSH.configuration_for(@host, true)
         @user = options['user'] || @ssh_options[:user]
         %w[port password keys].each do |param|
           @ssh_options[param.to_sym] = options[param] if options[param]
